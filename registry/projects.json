@@ -1,0 +1,570 @@
+{
+  "$schema": "./schema.json",
+  "version": 1,
+  "updated": "2026-08-07",
+  "relationTypes": [
+    "DEPENDS_ON",
+    "CONFORMS_TO",
+    "PROPOSES_TO",
+    "RECORDS_IN",
+    "PROJECTS_FROM",
+    "EMBODIES",
+    "DESCENDS_FROM",
+    "DONATES_PATTERN_TO",
+    "EXPERIMENTS_ON",
+    "EXPORTS_TO"
+  ],
+  "projects": [
+    {
+      "id": "project0",
+      "repository": "the-static-collective/project0",
+      "kind": "constitutional-substrate",
+      "status": "active",
+      "role": "Canonical semantic identity and addressing",
+      "owns": ["canonical encoding", "semantic addresses", "cross-language identity fixtures"],
+      "nonAuthority": ["artifact custody", "domain admission", "human meaning"],
+      "relations": []
+    },
+    {
+      "id": "tranchnode",
+      "repository": "the-static-collective/tranchnode",
+      "kind": "constitutional-substrate",
+      "status": "active",
+      "role": "Immutable artifact custody, addressed graphs, projection closure, and fulfillment",
+      "owns": ["immutable artifact storage", "provenance graph residue", "fulfillment substrate"],
+      "nonAuthority": ["semantic identity rules", "domain admission", "projection truth"],
+      "relations": [
+        { "type": "CONFORMS_TO", "target": "project0", "note": "Uses Project0 canonical addressing rather than inventing a second identity law." },
+        { "type": "DESCENDS_FROM", "target": "tranchnode-v1" }
+      ]
+    },
+    {
+      "id": "jubilee-authority-kit",
+      "repository": "the-static-collective/jubilee-authority-kit",
+      "kind": "shared-protocol",
+      "status": "seed",
+      "role": "Candidate reusable command, admission, refusal, receipt, and replay seam",
+      "owns": ["framework-neutral transition contracts", "shared adversarial fixtures"],
+      "nonAuthority": ["universal domain law", "canonical identity", "artifact storage", "automatic adoption"],
+      "relations": [
+        { "type": "CONFORMS_TO", "target": "project0", "note": "Receipt identity inherits the canonical addressing floor." }
+      ]
+    },
+    {
+      "id": "haunted-toaster",
+      "repository": "the-static-collective/the-haunted-toaster",
+      "kind": "domain-kernel",
+      "status": "active",
+      "role": "Lawful audiovisual score validation, resolution, preview, and render execution",
+      "owns": ["VisualScore admission", "ResolvedTimeline", "render receipts"],
+      "nonAuthority": ["unbounded creative proposal", "universal execution law"],
+      "relations": []
+    },
+    {
+      "id": "band-runtime",
+      "repository": "the-static-collective/band-runtime",
+      "kind": "domain-kernel",
+      "status": "active",
+      "role": "Encounter, admission, refusal, recognition, branching, and projection law",
+      "owns": ["encounter event vocabulary", "artifact-write admission", "protected silence"],
+      "nonAuthority": ["room user experience", "media playback", "universal human authorization"],
+      "relations": []
+    },
+    {
+      "id": "idea-grove",
+      "repository": "the-static-collective/idea-grove",
+      "kind": "domain-kernel",
+      "status": "active",
+      "role": "Human-governed proposal, harvest, and idea succession",
+      "owns": ["grove vocabulary", "human harvest", "idea succession"],
+      "nonAuthority": ["canonical addressing", "generic workflow law"],
+      "relations": [
+        { "type": "DESCENDS_FROM", "target": "jubilee-workspace" }
+      ]
+    },
+    {
+      "id": "full-measure",
+      "repository": "the-static-collective/full-measure-world-layer",
+      "kind": "domain-kernel",
+      "status": "active",
+      "role": "Participation, report, independent witness, harvest, and capacity law",
+      "owns": ["participation lifecycle", "independent confirmation", "harvest semantics"],
+      "nonAuthority": ["self-confirmation", "universal reputation"],
+      "relations": []
+    },
+    {
+      "id": "convergent-codec",
+      "repository": "the-static-collective/convergent-codec",
+      "kind": "research-kernel",
+      "status": "active",
+      "role": "Exact reconstruction competition and honest emitted-cost law",
+      "owns": ["codec experiment law", "exact reconstruction scoring"],
+      "nonAuthority": ["general artifact identity", "domain admission outside codec experiments"],
+      "relations": []
+    },
+    {
+      "id": "tranchnose",
+      "repository": "the-static-collective/tranchNOSE",
+      "kind": "research-kernel",
+      "status": "active",
+      "role": "Deterministic experiment receipts and exact replay",
+      "owns": ["experiment receipt format", "named PRNG streams", "replay proof"],
+      "nonAuthority": ["truth of a hypothesis", "target-system domain law"],
+      "relations": []
+    },
+    {
+      "id": "toaster-lab",
+      "repository": "the-static-collective/toaster-lab",
+      "kind": "proposal-discovery",
+      "status": "active",
+      "role": "Creative audiovisual proposal laboratory",
+      "owns": ["CreativeProposal", "candidate exploration", "multimodal interpretation"],
+      "nonAuthority": ["VisualScore validation", "canonical addressing", "render execution"],
+      "relations": [
+        { "type": "PROPOSES_TO", "target": "haunted-toaster" }
+      ]
+    },
+    {
+      "id": "toaster-oracle",
+      "repository": "the-static-collective/toaster-oracle",
+      "kind": "proposal-discovery",
+      "status": "active",
+      "role": "Feral upstream audiovisual generation and frontier exploration",
+      "owns": ["wild candidate generation"],
+      "nonAuthority": ["candidate admission", "execution", "canonical state"],
+      "relations": [
+        { "type": "PROPOSES_TO", "target": "toaster-lab" }
+      ]
+    },
+    {
+      "id": "seedforge",
+      "repository": "the-static-collective/seedforge",
+      "kind": "proposal-discovery",
+      "status": "active",
+      "role": "Major creative-proposal donor and active ancestor",
+      "owns": ["creative seed exploration"],
+      "nonAuthority": ["downstream admission", "canonical execution"],
+      "relations": []
+    },
+    {
+      "id": "seamforge",
+      "repository": "the-static-collective/SEAMforge",
+      "kind": "proposal-discovery",
+      "status": "active",
+      "role": "Architectural observation, seam discovery, and extraction proposals",
+      "owns": ["contract-card observations", "typed architectural proposals"],
+      "nonAuthority": ["declaring two systems equivalent", "merging domains", "canonical transition"],
+      "relations": [
+        { "type": "PROPOSES_TO", "target": "jubilee-authority-kit", "note": "Proposals require human adoption and proof in multiple domains." }
+      ]
+    },
+    {
+      "id": "founder-node",
+      "repository": "the-static-collective/founder-node",
+      "kind": "control-plane",
+      "status": "dormant",
+      "role": "Candidate compiler from founder intent into reviewable work proposals",
+      "owns": ["intent compilation proposals"],
+      "nonAuthority": ["repository execution", "human authorization", "domain admission"],
+      "relations": []
+    },
+    {
+      "id": "corpus-os",
+      "repository": "the-static-collective/corpus-os",
+      "kind": "embodiment",
+      "status": "active",
+      "role": "Evidence-preserving corpus navigation and first falsifiable downstream substrate proof",
+      "owns": ["corpus admission policy", "exact evidence return", "corpus navigation"],
+      "nonAuthority": ["source truth", "canonical addressing", "AI interpretation as fact"],
+      "relations": [
+        { "type": "DEPENDS_ON", "target": "tranchnode" },
+        { "type": "CONFORMS_TO", "target": "project0" },
+        { "type": "DESCENDS_FROM", "target": "corpus-os-local-intake" }
+      ]
+    },
+    {
+      "id": "groove-rooms",
+      "repository": "the-static-collective/groove-rooms",
+      "kind": "embodiment",
+      "status": "active",
+      "role": "Inhabitable collaborative listening room",
+      "owns": ["rooms and invites", "media experience", "voluntary playback coordination"],
+      "nonAuthority": ["encounter law", "mix as canonical truth"],
+      "relations": [
+        { "type": "EMBODIES", "target": "band-runtime" }
+      ]
+    },
+    {
+      "id": "formation-trace",
+      "repository": "the-static-collective/formation-trace",
+      "kind": "embodiment",
+      "status": "active",
+      "role": "Private formation instrument with explicit offered-export boundaries",
+      "owns": ["private formation trace", "local mutation and privacy policy"],
+      "nonAuthority": ["automatic disclosure", "shared-runtime authority"],
+      "relations": []
+    },
+    {
+      "id": "the-autodisco",
+      "repository": "the-static-collective/the-autodisco",
+      "kind": "embodiment",
+      "status": "active",
+      "role": "Archive, radio, lineage braid, and collective-memory surface",
+      "owns": ["autodiscography experience", "collective archive projection"],
+      "nonAuthority": ["source-artifact identity", "lineage invention"],
+      "relations": [
+        { "type": "DESCENDS_FROM", "target": "autodisco-v20" }
+      ]
+    },
+    {
+      "id": "circle",
+      "repository": "the-static-collective/circle",
+      "kind": "embodiment",
+      "status": "active",
+      "role": "Broad communal product proving ground",
+      "owns": ["circle product experience"],
+      "nonAuthority": ["shared constitutional substrate"],
+      "relations": [
+        { "type": "DESCENDS_FROM", "target": "jubilee-campfire" }
+      ]
+    },
+    {
+      "id": "gramfork",
+      "repository": "the-static-collective/gramfork",
+      "kind": "embodiment",
+      "status": "active",
+      "role": "Hardened mutual-aid product proof",
+      "owns": ["mutual-aid circles", "needs and contributions", "verified stages"],
+      "nonAuthority": ["generic admission law", "universal trust"],
+      "relations": [
+        { "type": "DESCENDS_FROM", "target": "bananagram-gram-to-fork" }
+      ]
+    },
+    {
+      "id": "recoreturn",
+      "repository": "the-static-collective/reCOreturn",
+      "kind": "embodiment",
+      "status": "active",
+      "role": "Independent recognition, return, and stewardship product domain",
+      "owns": ["recognition-return-stewardship domain"],
+      "nonAuthority": ["shared ecosystem law"],
+      "relations": []
+    },
+    {
+      "id": "lamppost",
+      "repository": "the-static-collective/LampPost",
+      "kind": "embodiment",
+      "status": "dormant",
+      "role": "Descendant public-facing embodiment and concept donor",
+      "owns": ["LampPost product expression"],
+      "nonAuthority": ["shared substrate"],
+      "relations": [
+        { "type": "DESCENDS_FROM", "target": "recurvrepair" }
+      ]
+    },
+    {
+      "id": "chronoquest",
+      "repository": "the-static-collective/ChronoQuest",
+      "kind": "embodiment",
+      "status": "active",
+      "role": "Habit-weighted story and role-playing experiment",
+      "owns": ["habit-to-story game mechanics"],
+      "nonAuthority": ["health truth", "shared constitutional law"],
+      "relations": []
+    },
+    {
+      "id": "fork-exclaim",
+      "repository": "the-static-collective/fork-EXCLAIM",
+      "kind": "concept-donor",
+      "status": "active",
+      "role": "Standalone creative ancestor to harvest without forcing into the runtime graph",
+      "owns": ["candidate role interaction", "parent-linked creative forks"],
+      "nonAuthority": ["Jubilee-wide ontology"],
+      "relations": []
+    },
+    {
+      "id": "mundane-wormhole",
+      "repository": "the-static-collective/mundaneWORMHOLE",
+      "kind": "concept-donor",
+      "status": "active",
+      "role": "Living artwork, instrument, and experiential concept donor",
+      "owns": ["its own artwork and instrument experience"],
+      "nonAuthority": ["shared execution law"],
+      "relations": []
+    },
+    {
+      "id": "remix-recurvrepair",
+      "repository": "the-static-collective/reMIX-reCURVrePAIR",
+      "kind": "concept-donor",
+      "status": "dormant",
+      "role": "Remix, repair, and transition-grammar donor",
+      "owns": ["transition and remix concepts"],
+      "nonAuthority": ["current runtime dependency"],
+      "relations": []
+    },
+    {
+      "id": "recurvrepair",
+      "repository": "the-static-collective/reCURVrePAIR",
+      "kind": "concept-donor",
+      "status": "monument",
+      "role": "Closed monument and major concept donor",
+      "owns": ["historical repair concepts"],
+      "nonAuthority": ["active coordination", "current runtime dependency"],
+      "relations": []
+    },
+    {
+      "id": "unfolding-ledger",
+      "repository": "the-static-collective/unfolding-ledger",
+      "kind": "concept-donor",
+      "status": "dormant",
+      "role": "Constitutional and provenance pattern donor",
+      "owns": ["historical ledger patterns", "adversarial fixtures"],
+      "nonAuthority": ["canonical addressing after Project0 convergence"],
+      "relations": [
+        { "type": "DONATES_PATTERN_TO", "target": "jubilee-authority-kit" }
+      ]
+    },
+    {
+      "id": "seedfork",
+      "repository": "the-static-collective/seedFORK",
+      "kind": "concept-donor",
+      "status": "dormant",
+      "role": "Major synthesis donor and integration ancestor",
+      "owns": ["historical synthesis patterns"],
+      "nonAuthority": ["current integration contract"],
+      "relations": []
+    },
+    {
+      "id": "tranchnode-v1",
+      "repository": "the-static-collective/tranchNode-v1",
+      "kind": "lineage-ancestor",
+      "status": "ancestor",
+      "role": "Concept ancestor to TranchNode and Autodisco provenance experiment",
+      "owns": ["historical provenance experiments"],
+      "nonAuthority": ["current TranchNode contract"],
+      "relations": []
+    },
+    {
+      "id": "corpus-os-local-intake",
+      "repository": "the-static-collective/Corpus-OS-Local-Intake-Implementation",
+      "kind": "lineage-ancestor",
+      "status": "ancestor",
+      "role": "Direct code ancestor and intake experiment for Corpus OS",
+      "owns": ["historical local-intake implementation"],
+      "nonAuthority": ["current Corpus OS contract"],
+      "relations": []
+    },
+    {
+      "id": "autodisco-v20",
+      "repository": "the-static-collective/The-AutodiscoV.20.-question-marks-",
+      "kind": "lineage-ancestor",
+      "status": "ancestor",
+      "role": "Direct product ancestor of The Autodisco",
+      "owns": ["historical Autodisco product implementation"],
+      "nonAuthority": ["current Autodisco contract"],
+      "relations": []
+    },
+    {
+      "id": "jubilee-workspace",
+      "repository": "the-static-collective/jubilee-workspace",
+      "kind": "lineage-ancestor",
+      "status": "ancestor",
+      "role": "Direct code and product ancestor of Idea Grove",
+      "owns": ["historical workspace implementation"],
+      "nonAuthority": ["current Idea Grove contract"],
+      "relations": [
+        { "type": "DESCENDS_FROM", "target": "jublechat" }
+      ]
+    },
+    {
+      "id": "jublechat",
+      "repository": "the-static-collective/jublEchat",
+      "kind": "lineage-ancestor",
+      "status": "ancestor",
+      "role": "Major direct ancestor and constitutional donor to Workspace and Idea Grove",
+      "owns": ["historical chat and workspace patterns"],
+      "nonAuthority": ["current grove authority"],
+      "relations": []
+    },
+    {
+      "id": "jubilee-campfire",
+      "repository": "the-static-collective/Jubilee-Campfire",
+      "kind": "lineage-ancestor",
+      "status": "ancestor",
+      "role": "Concept and product ancestor of Circle",
+      "owns": ["historical communal product patterns"],
+      "nonAuthority": ["current Circle contract"],
+      "relations": []
+    },
+    {
+      "id": "bananagram-gram-to-fork",
+      "repository": "the-static-collective/BananaGram-Gram-to-Fork",
+      "kind": "lineage-ancestor",
+      "status": "ancestor",
+      "role": "Direct broad ancestor of Gramfork",
+      "owns": ["historical broad Gram-to-Fork implementation"],
+      "nonAuthority": ["current Gramfork contract"],
+      "relations": []
+    },
+    {
+      "id": "jubilee-engine-vm",
+      "repository": "the-static-collective/Jubilee-Engine-VM",
+      "kind": "lineage-ancestor",
+      "status": "ancestor",
+      "role": "Major architectural and research ancestor",
+      "owns": ["historical architectural experiments"],
+      "nonAuthority": ["current shared architecture"],
+      "relations": []
+    },
+    {
+      "id": "jubilee-v1",
+      "repository": "the-static-collective/JubileeV.1",
+      "kind": "lineage-ancestor",
+      "status": "ancestor",
+      "role": "Early product and prototype lineage",
+      "owns": ["historical Jubilee prototype"],
+      "nonAuthority": ["current product direction"],
+      "relations": []
+    },
+    {
+      "id": "seedforge-v0",
+      "repository": "the-static-collective/seedforge-v0",
+      "kind": "lineage-ancestor",
+      "status": "unresolved",
+      "role": "Probable Jubilee Engine VM snapshot or duplicate requiring archaeology",
+      "owns": [],
+      "nonAuthority": ["current SeedForge lineage until inspected"],
+      "relations": []
+    },
+    {
+      "id": "garden-whisperer",
+      "repository": "the-static-collective/garden-whisperer",
+      "kind": "unresolved",
+      "status": "unresolved",
+      "role": "Lovable product branch requiring inspection before classification",
+      "owns": [],
+      "nonAuthority": ["any inferred ecosystem role before inspection"],
+      "relations": []
+    },
+    {
+      "id": "banana-dash",
+      "repository": "the-static-collective/BananaDash",
+      "kind": "unresolved",
+      "status": "unresolved",
+      "role": "Unclassified repository retained in inventory",
+      "owns": [],
+      "nonAuthority": ["any inferred ecosystem role before inspection"],
+      "relations": []
+    },
+    {
+      "id": "recurv",
+      "repository": "the-static-collective/reCURV",
+      "kind": "unresolved",
+      "status": "unresolved",
+      "role": "Unclassified repository retained in inventory",
+      "owns": [],
+      "nonAuthority": ["any inferred ecosystem role before inspection"],
+      "relations": []
+    },
+    {
+      "id": "bnanagram",
+      "repository": "the-static-collective/BnanaGram",
+      "kind": "unresolved",
+      "status": "unresolved",
+      "role": "Unclassified repository retained in inventory",
+      "owns": [],
+      "nonAuthority": ["any inferred ecosystem role before inspection"],
+      "relations": []
+    },
+    {
+      "id": "nourish-kids",
+      "repository": "the-static-collective/Nourish-Kids",
+      "kind": "unresolved",
+      "status": "unresolved",
+      "role": "Unclassified repository retained in inventory",
+      "owns": [],
+      "nonAuthority": ["any inferred ecosystem role before inspection"],
+      "relations": []
+    },
+    {
+      "id": "autodisco-video-receipt",
+      "repository": "the-static-collective/autodisco-video-receipt",
+      "kind": "unresolved",
+      "status": "unresolved",
+      "role": "Unclassified repository retained in inventory",
+      "owns": [],
+      "nonAuthority": ["any inferred ecosystem role before inspection"],
+      "relations": []
+    },
+    {
+      "id": "banana-spork",
+      "repository": "the-static-collective/BananaSpork",
+      "kind": "unresolved",
+      "status": "unresolved",
+      "role": "Unclassified repository retained in inventory",
+      "owns": [],
+      "nonAuthority": ["any inferred ecosystem role before inspection"],
+      "relations": []
+    },
+    {
+      "id": "appliance-prophet-king",
+      "repository": "the-static-collective/appliance-prophet-king",
+      "kind": "unresolved",
+      "status": "unresolved",
+      "role": "Unclassified repository retained in inventory",
+      "owns": [],
+      "nonAuthority": ["any inferred ecosystem role before inspection"],
+      "relations": []
+    },
+    {
+      "id": "rrs",
+      "repository": "the-static-collective/RRS",
+      "kind": "unresolved",
+      "status": "unresolved",
+      "role": "Unclassified repository retained in inventory",
+      "owns": [],
+      "nonAuthority": ["any inferred ecosystem role before inspection"],
+      "relations": []
+    },
+    {
+      "id": "rrs-1",
+      "repository": "the-static-collective/RRS-1-",
+      "kind": "unresolved",
+      "status": "unresolved",
+      "role": "Unclassified repository retained in inventory",
+      "owns": [],
+      "nonAuthority": ["any inferred ecosystem role before inspection"],
+      "relations": []
+    },
+    {
+      "id": "one-hundred-pies",
+      "repository": "the-static-collective/100pies",
+      "kind": "unresolved",
+      "status": "unresolved",
+      "role": "Unclassified repository retained in inventory",
+      "owns": [],
+      "nonAuthority": ["any inferred ecosystem role before inspection"],
+      "relations": []
+    },
+    {
+      "id": "pies",
+      "repository": "the-static-collective/pies",
+      "kind": "unresolved",
+      "status": "unresolved",
+      "role": "Unclassified repository retained in inventory",
+      "owns": [],
+      "nonAuthority": ["any inferred ecosystem role before inspection"],
+      "relations": []
+    },
+    {
+      "id": "what-is-static-collective",
+      "repository": "the-static-collective/What-is-the-static-collective-",
+      "kind": "unresolved",
+      "status": "unresolved",
+      "role": "Unclassified repository retained in inventory",
+      "owns": [],
+      "nonAuthority": ["any inferred ecosystem role before inspection"],
+      "relations": []
+    }
+  ]
+}
