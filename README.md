@@ -14,6 +14,7 @@ This repository is intentionally **not** a new app or runtime. It is the shared 
 - replay and idempotency fixtures
 - projection boundaries: a view may derive from a receipt stream; it cannot become authority
 - integration guidance for domain adapters
+- a descriptive, typed ecosystem registry that distinguishes execution edges from lineage and concept donation
 
 ## What does not
 
@@ -21,6 +22,7 @@ This repository is intentionally **not** a new app or runtime. It is the shared 
 - UI state, realtime transport, or audio/media implementation
 - mutable collaboration tables used as a shortcut for command authority
 - “AI decides” logic
+- universal authority over the projects named in the registry
 
 ## Laws
 
@@ -42,8 +44,14 @@ This repository is intentionally **not** a new app or runtime. It is the shared 
 | `jubilee-workspace` / `idea-grove` | read/propose-only interfaces | grove vocabulary and visual surface |
 | `fork-EXCLAIM` | optional exported proposal seam | its standalone creative product logic |
 
-Read [the architecture](docs/architecture.md), [the ecosystem map](docs/adoption-map.md), and [the first implementation slice](docs/first-slice.md).
+Read [the architecture](docs/architecture.md), [the ecosystem covenant map](docs/adoption-map.md), [the machine-readable registry](registry/projects.json), and [the first implementation slice](docs/first-slice.md).
+
+Validate registry identity and edges with:
+
+```bash
+node registry/validate.mjs
+```
 
 ## Status
 
-Seed specification. The next useful commit should add a tiny TypeScript package and fixtures before any adapter is rewritten.
+Seed specification. The ecosystem registry is descriptive and grants no authority. The next runtime slice remains a tiny TypeScript package and fixtures before any adapter is rewritten.
