@@ -1,0 +1,132 @@
+{
+  "version": 1,
+  "updated": "2026-08-07",
+  "invariants": [
+    {
+      "id": "canonical-identity",
+      "claim": "Canonical semantic identity is owned by Project0 and must converge on one cross-runtime addressing floor rather than being redefined downstream.",
+      "owner": "project0",
+      "proof": "Merged Project0 PR #28 declares itself the canonical-addressing winner, hardens RFC 8785-based identity across TypeScript and Python, and explicitly limits identity to stable bytes and addresses.",
+      "formalRule": "For every admissible semantic value x, all conforming runtimes MUST produce the same canonical bytes and semantic address; unsupported runtime states MUST be rejected rather than normalized by a second local identity rule.",
+      "proofRefs": [
+        {
+          "repository": "the-static-collective/project0",
+          "type": "pull_request",
+          "number": 28,
+          "commit": "5deb005e10ef772bbf1a261e034a4f1d74555bfd"
+        }
+      ],
+      "consumers": ["tranchnode", "corpus-os", "jubilee-authority-kit"],
+      "counterexamples": [
+        "A downstream repository invents a second canonicalizer for values already covered by Project0.",
+        "Two supported runtimes accept the same semantic value but emit different canonical addresses."
+      ],
+      "maturity": "proven"
+    },
+    {
+      "id": "immutable-source",
+      "claim": "Addressed source artifacts are immutable: an artifact address denotes one exact byte sequence and cannot be overwritten with different bytes.",
+      "owner": "tranchnode",
+      "proof": "Merged TranchNode PR #27 implements a create-if-absent filesystem artifact store with verified reads, idempotent duplicate writes, concurrent convergence, and fatal corruption detection.",
+      "formalRule": "If address a denotes bytes b, every successful read of a MUST verify hash(b) = a, and any attempted publication of b2 at a is admissible only when b2 is byte-identical to b.",
+      "proofRefs": [
+        {
+          "repository": "the-static-collective/tranchnode",
+          "type": "pull_request",
+          "number": 27,
+          "commit": "3695ed362643db876b74a6366b16b98817c32a04"
+        }
+      ],
+      "consumers": ["corpus-os"],
+      "counterexamples": [
+        "An existing artifact address resolves to different bytes after a later write.",
+        "A read returns bytes without recomputing and checking the requested digest."
+      ],
+      "maturity": "proven"
+    },
+    {
+      "id": "proposal-not-authority",
+      "claim": "Creative proposal is not execution authority: proposal systems may generate candidate material, but executable meaning is established only by the repository that owns admission and resolution.",
+      "owner": "toaster-lab",
+      "proof": "Merged Toaster Lab PR #2 makes CreativeProposal explicitly non-canonical and delegates VisualScore validation, canonical addressing, and ResolvedTimeline resolution to Haunted Toaster.",
+      "formalRule": "propose(x) MUST NOT imply admit(x); a proposal becomes executable only after the declared downstream authority validates and resolves it under that authority's own law.",
+      "proofRefs": [
+        {
+          "repository": "the-static-collective/toaster-lab",
+          "type": "pull_request",
+          "number": 2,
+          "commit": "830de157353639196a8feb370ef6baf076e964d2"
+        }
+      ],
+      "consumers": ["toaster-oracle", "haunted-toaster"],
+      "counterexamples": [
+        "A CreativeProposal is treated as executable without Haunted Toaster admission.",
+        "A proposal generator silently canonicalizes or resolves the candidate itself."
+      ],
+      "maturity": "proven"
+    },
+    {
+      "id": "preview-render-timeline-parity",
+      "claim": "Preview and production render must interpret the same accepted ResolvedTimeline through the same canonical execution semantics.",
+      "owner": "haunted-toaster",
+      "proof": "Merged Haunted Toaster PR #18 makes preview sample the same timeline execution adapter used by production render, proves parity at canonical boundaries, and binds score/timeline sidecars plus receipt identity to that accepted state.",
+      "formalRule": "For an accepted ResolvedTimeline T and canonical tick t, previewState(T,t) MUST equal the semantic renderer state compiled from the same execution adapter at t; preview MUST NOT maintain an independent meaning path.",
+      "proofRefs": [
+        {
+          "repository": "the-static-collective/the-haunted-toaster",
+          "type": "pull_request",
+          "number": 18,
+          "commit": "7b0241828eb465eb8252447a200f173577f41f8e"
+        }
+      ],
+      "consumers": ["toaster-lab"],
+      "counterexamples": [
+        "Preview samples local UI state that production render does not consume.",
+        "The same ResolvedTimeline produces semantically different preview and render states at a canonical boundary."
+      ],
+      "maturity": "proven"
+    },
+    {
+      "id": "refusal-preserves-state",
+      "claim": "A refused action may leave attributable refusal residue, but it must not alter the protected semantic state it failed to enter.",
+      "owner": "band-runtime",
+      "proof": "Merged Band Runtime PR #12 exposes the admission kernel through a read-only MCP tool and proves hostile protected-silence refusal with semanticEffect none, payload exclusion, deterministic output, and unchanged protected artifact hash.",
+      "formalRule": "If admission(command,state) = refused, then protectedStateAfter MUST equal protectedStateBefore and any durable refusal receipt MUST declare semanticEffect = \"none\".",
+      "proofRefs": [
+        {
+          "repository": "the-static-collective/band-runtime",
+          "type": "pull_request",
+          "number": 12,
+          "commit": "a5ca1ee2c749450070f4e12123efa80da1200a18"
+        }
+      ],
+      "consumers": ["groove-rooms"],
+      "counterexamples": [
+        "A refused write changes the protected artifact hash.",
+        "The refused payload enters the general semantic projection or durable semantic input."
+      ],
+      "maturity": "proven"
+    },
+    {
+      "id": "replay-from-recorded-state",
+      "claim": "Exact replay must be derivable from recorded causal state and declared deterministic inputs, not from ambient machine or wall-clock state.",
+      "owner": "tranchnose",
+      "proof": "Merged TranchNOSE PR #2 freezes the Experiment 001A deterministic receipt contract, excludes wall-clock, host/process identity, filesystem paths, and ambient RNG from causal run identity, and requires exact replay on the declared backend.",
+      "formalRule": "replay(recordedInputs, recordedState, namedDeterministicStreams) MUST reproduce the recorded deterministic result exactly; any unrecorded ambient dependency that can change the result violates replayability.",
+      "proofRefs": [
+        {
+          "repository": "the-static-collective/tranchNOSE",
+          "type": "pull_request",
+          "number": 2,
+          "commit": "119f1eb9f94fe06fc896fee99bc5c79c2c0adfc4"
+        }
+      ],
+      "consumers": ["jubilee-authority-kit"],
+      "counterexamples": [
+        "Replay consults wall-clock time or ambient RNG that was not captured in the record.",
+        "The same recorded state and declared deterministic inputs produce a different receipt digest."
+      ],
+      "maturity": "proven"
+    }
+  ]
+}
