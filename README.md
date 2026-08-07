@@ -15,6 +15,7 @@ This repository is intentionally **not** a new app or runtime. It is the shared 
 - projection boundaries: a view may derive from a receipt stream; it cannot become authority
 - integration guidance for domain adapters
 - a descriptive, typed ecosystem registry that distinguishes execution edges from lineage and concept donation
+- a federated invariant index that points from a proven claim to its owning repository and executable evidence
 
 ## What does not
 
@@ -23,6 +24,7 @@ This repository is intentionally **not** a new app or runtime. It is the shared 
 - mutable collaboration tables used as a shortcut for command authority
 - “AI decides” logic
 - universal authority over the projects named in the registry
+- ownership of the laws indexed in `registry/invariants.json`
 
 ## Laws
 
@@ -44,9 +46,9 @@ This repository is intentionally **not** a new app or runtime. It is the shared 
 | `jubilee-workspace` / `idea-grove` | read/propose-only interfaces | grove vocabulary and visual surface |
 | `fork-EXCLAIM` | optional exported proposal seam | its standalone creative product logic |
 
-Read [the architecture](docs/architecture.md), [the ecosystem covenant map](docs/adoption-map.md), [the machine-readable registry](registry/projects.json), and [the first implementation slice](docs/first-slice.md).
+Read [the architecture](docs/architecture.md), [the ecosystem covenant map](docs/adoption-map.md), [the machine-readable project registry](registry/projects.json), [the federated invariant index](registry/invariants.json), and [the first implementation slice](docs/first-slice.md).
 
-Validate registry identity and edges with:
+Validate project identity, typed edges, invariant ownership/proof references, authority overlaps, unowned capability signals, and the operational living-marrow view with:
 
 ```bash
 node registry/validate.mjs
@@ -54,4 +56,4 @@ node registry/validate.mjs
 
 ## Status
 
-Seed specification. The ecosystem registry is descriptive and grants no authority. The next runtime slice remains a tiny TypeScript package and fixtures before any adapter is rewritten.
+Seed specification. Both registries are descriptive and grant no authority. `projects.json` records declared ecosystem roles; `invariants.json` records discovered law only after proof and always points back to the repository that owns that law.
