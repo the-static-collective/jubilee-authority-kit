@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/the-static-collective/jubilee-authority-kit/registry/schema.json",
+  "title": "Static Collective ecosystem registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "updated", "relationTypes", "projects"],
+  "properties": {
+    "version": { "const": 1 },
+    "updated": { "type": "string", "format": "date" },
+    "relationTypes": {
+      "type": "array",
+      "minItems": 10,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/relationType" }
+    },
+    "projects": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/project" }
+    }
+  },
+  "$defs": {
+    "relationType": {
+      "enum": [
+        "DEPENDS_ON",
+        "CONFORMS_TO",
+        "PROPOSES_TO",
+        "RECORDS_IN",
+        "PROJECTS_FROM",
+        "EMBODIES",
+        "DESCENDS_FROM",
+        "DONATES_PATTERN_TO",
+        "EXPERIMENTS_ON",
+        "EXPORTS_TO"
+      ]
+    },
+    "relation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "target"],
+      "properties": {
+        "type": { "$ref": "#/$defs/relationType" },
+        "target": { "type": "string", "minLength": 1 },
+        "note": { "type": "string", "minLength": 1 }
+      }
+    },
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "repository", "kind", "status", "role", "owns", "nonAuthority", "relations"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "repository": { "type": "string", "pattern": "^the-static-collective/.+$" },
+        "kind": {
+          "enum": [
+            "constitutional-substrate",
+            "shared-protocol",
+            "domain-kernel",
+            "proposal-discovery",
+            "embodiment",
+            "research-kernel",
+            "control-plane",
+            "lineage-ancestor",
+            "concept-donor",
+            "unresolved"
+          ]
+        },
+        "status": { "enum": ["active", "seed", "dormant", "ancestor", "monument", "unresolved"] },
+        "role": { "type": "string", "minLength": 1 },
+        "owns": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+        "nonAuthority": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+        "relations": { "type": "array", "items": { "$ref": "#/$defs/relation" } }
+      }
+    }
+  }
+}
