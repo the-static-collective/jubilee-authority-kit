@@ -36,6 +36,19 @@ This repository is intentionally **not** a new app or runtime. It is the shared 
 6. **Projections are not the ledger.** Realtime, synthesis, UI, and search can fail or be recomputed without changing history.
 7. **Local formation stays local until offered.** A private trace becomes shared only through an explicit, signed export artifact.
 
+## Registry status semantics
+
+`projects.json.status` is **descriptive activity/lifecycle metadata**, not authority and not a permission bit. Consumers must not infer that `active` grants execution authority or that `dormant` revokes a declared capability. `kind`, `owns`, `nonAuthority`, and typed `relations` remain the stronger routing/authority declarations.
+
+- `active` — materially in current development or operation;
+- `seed` — an early shared seam/specification under active discovery, not yet a mature common authority surface;
+- `dormant` — retained and potentially useful, but not currently being developed or operated;
+- `ancestor` — historical direct lineage retained for provenance, not current implementation authority;
+- `monument` — intentionally closed historical form retained as evidence/donor material;
+- `unresolved` — inventoried but not sufficiently inspected to classify safely.
+
+A project may carry paired `statusReviewedAt` + `statusBasis` fields. They state **when and why that descriptive status was last reviewed**. Freshness is advisory evidence only: it never manufactures repository authority, silently disables routing, or overrides explicit ownership/non-authority declarations.
+
 ## First proving grounds
 
 | Consumer | Uses the kit for | Keeps local |
@@ -48,7 +61,7 @@ This repository is intentionally **not** a new app or runtime. It is the shared 
 
 Read [the architecture](docs/architecture.md), [the ecosystem covenant map](docs/adoption-map.md), [the machine-readable project registry](registry/projects.json), [the federated invariant index](registry/invariants.json), and [the first implementation slice](docs/first-slice.md).
 
-Validate project identity, typed edges, invariant ownership/proof references, authority overlaps, unowned capability signals, and the operational living-marrow view with:
+Validate project identity, typed edges, invariant ownership/proof references, authority overlaps, unowned capability signals, status-review metadata, and the operational living-marrow view with:
 
 ```bash
 node registry/validate.mjs
