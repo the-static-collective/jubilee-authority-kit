@@ -1,7 +1,7 @@
 {
   "$schema": "./schema.json",
   "version": 1,
-  "updated": "2026-08-07",
+  "updated": "2026-08-09",
   "relationTypes": [
     "DEPENDS_ON",
     "CONFORMS_TO",
@@ -162,7 +162,9 @@
       "id": "founder-node",
       "repository": "the-static-collective/founder-node",
       "kind": "control-plane",
-      "status": "dormant",
+      "status": "active",
+      "statusReviewedAt": "2026-08-09",
+      "statusBasis": "PR #1 merged registry-driven routing and fail-closed authority conflict handling; Founder Node is materially participating as the current proposal-routing control plane.",
       "role": "Candidate compiler from founder intent into reviewable work proposals",
       "owns": ["intent compilation proposals"],
       "nonAuthority": ["repository execution", "human authorization", "domain admission"],
