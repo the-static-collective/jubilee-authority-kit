@@ -14,6 +14,7 @@ const warnings = [];
 
 const normalize = (value) => value.toLowerCase().trim().replace(/[^a-z0-9]+/g, " ").replace(/\s+/g, " ");
 const nonEmptyString = (value) => typeof value === "string" && value.trim().length > 0;
+const isoDate = (value) => typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/.test(value) && !Number.isNaN(Date.parse(`${value}T00:00:00Z`));
 const capabilityMatches = (left, right) => {
   const a = normalize(left);
   const b = normalize(right);
@@ -27,6 +28,18 @@ for (const project of registry.projects) {
   repos.add(project.repository);
   projectById.set(project.id, project);
   projectByRepo.set(project.repository, project);
+
+  const hasStatusReviewedAt = project.statusReviewedAt !== undefined;
+  const hasStatusBasis = project.statusBasis !== undefined;
+  if (hasStatusReviewedAt !== hasStatusBasis) {
+    errors.push(`${project.id}: statusReviewedAt and statusBasis must be declared together`);
+  }
+  if (hasStatusReviewedAt && !isoDate(project.statusReviewedAt)) {
+    errors.push(`${project.id}: invalid statusReviewedAt ${project.statusReviewedAt}`);
+  }
+  if (hasStatusBasis && !nonEmptyString(project.statusBasis)) {
+    errors.push(`${project.id}: statusBasis must be a non-empty string`);
+  }
 }
 
 for (const project of registry.projects) {
@@ -137,6 +150,7 @@ const activeExecution = registry.projects.filter((project) =>
 const activeProposal = registry.projects.filter((project) => project.status === "active" && project.kind === "proposal-discovery");
 const donors = registry.projects.filter((project) => project.kind === "concept-donor" && project.status !== "monument");
 const ancestorsAndMonuments = registry.projects.filter((project) => project.kind === "lineage-ancestor" || ["ancestor", "monument"].includes(project.status));
+const statusReviewed = registry.projects.filter((project) => project.statusReviewedAt && project.statusBasis);
 
 if (errors.length) {
   console.error(errors.join("\n"));
@@ -156,6 +170,12 @@ const unowned = [...unownedCapabilities.values()].sort();
 console.log(`\nunowned capability report: ${unowned.length} explicitly disclaimed capabilities have no matching active owner`);
 for (const capability of unowned.slice(0, 12)) console.log(`- ${capability}`);
 if (unowned.length > 12) console.log(`- ... ${unowned.length - 12} more`);
+
+console.log(`\nstatus freshness report: ${statusReviewed.length}/${registry.projects.length} projects carry explicit status review evidence`);
+for (const project of [...statusReviewed].sort((a, b) => a.id.localeCompare(b.id))) {
+  console.log(`- ${project.id}: ${project.status} reviewed ${project.statusReviewedAt} — ${project.statusBasis}`);
+}
+console.log("- status metadata is advisory; kind/owns/nonAuthority/relations remain the stronger routing and authority declarations");
 
 console.log("\n=== living marrow ===");
 renderGroup("active execution", activeExecution);
