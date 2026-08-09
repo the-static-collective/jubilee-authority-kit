@@ -66,10 +66,16 @@
           ]
         },
         "status": { "enum": ["active", "seed", "dormant", "ancestor", "monument", "unresolved"] },
+        "statusReviewedAt": { "type": "string", "format": "date" },
+        "statusBasis": { "type": "string", "minLength": 1 },
         "role": { "type": "string", "minLength": 1 },
         "owns": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
         "nonAuthority": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
         "relations": { "type": "array", "items": { "$ref": "#/$defs/relation" } }
+      },
+      "dependentRequired": {
+        "statusReviewedAt": ["statusBasis"],
+        "statusBasis": ["statusReviewedAt"]
       }
     }
   }
